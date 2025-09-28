@@ -1,0 +1,38 @@
+Curso phpstan
+
+aula 1
+    vendor/bin/phpstan analyse --level 6 app/ core/
+        Analisando as pastas app/ e core/ no nível 6
+        Visto que o phpstan detectou erros no if, detecta falta de tipagem no retorno de método e demais bugs quanto ao retorno do método
+
+
+aula 2 - Vendo sobre levels
+    Para projetos já existentes, o ideal é começar no level 0 e ir subindo conforme for corrigindo os erros.
+    Para projetos novos, o ideal é começar no level 6 e ir subindo conforme for corrigindo os erros.
+
+
+aula 3 - Vendo sobre o arquivo de configuração phpstan.neon
+    Deve ficar na raiz do projeto
+    vendor/bin/phpstan analyse -c phpstan.neon OU vendor/bin/phpstan ASSIM IRÁ LER O ARQUIVO DE CONFIGURAÇÃO
+    - Visto sobre o arquivo de configuração que pode ser utilizado por uma equipe. Esse arquivo será incluido no arquivo principal e irá mesclar as configurações.
+    -Visto sobre excluir arquivos e pastas da análise com parametro excludePaths
+    - O phpStan leva em consideração as configurações e arquivos do composer.json e dos arquivos listados para serem analisados.
+
+
+
+Curso PHPStan - Ignorando errors - Aula 04
+    Quando não tenho tempo de arrumar, quando um erro não é tão importante, quando um erro é falso positivo e próprios do PHPStan
+    Podemos utilizar o phpDoc @phpstan-ignore-next-line e @phpstan-ignore-line
+    Com o valor ignoreErrors no phpstan.neon podemos erros com mensagens específicas ou padrões regex
+    O site do phpstan fornece uma ferramenta para gerar regex a partir de uma mensagem de erro
+        Exemplo:
+            parameters:
+                ignoreErrors:
+                    - '#Call to an undefined method App\\Models\\User::getName\(\)#'
+                    - '#Call to an undefined method App\\Models\\User::getLastName\(\)#'
+                    - '#Call to an undefined method App\\Models\\User::getEmail\(\)#'
+                    - '#Call to an undefined method App\\Models\\User::getPassword\(\)#'
+                    - '#Call to an undefined method App\\Models\\User::getCreatedAt\(\)#'
+                    - '#Call to an undefined method App\\Models\\User::getUpdatedAt\(\)#'
+
+    Visto sobre o --generate-baseline junto do comando para rodar o phpstan. Isso irá gerar um arquivo contendo todos os erros encontrados na análise utilizando o nível especificado. Assim podemos incluir no nosso projeto e ir corrigindo os erros aos poucos. O arquivo gerado também será um arquivo neon porém com o valor de ignoreErrors já preenchido com todos os erros encontrados.
