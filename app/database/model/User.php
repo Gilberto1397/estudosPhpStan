@@ -2,7 +2,12 @@
 
 class User
 {
-    public function find(): stdClass|null
+    /**
+     * @param int<1, 5> $id
+     * @param non-empty-string $nome
+     * @return stdClass|null
+     */
+    public function find(int $id, string $nome): stdClass|null
     {
         $data= new stdClass();
         $data->id = 1;

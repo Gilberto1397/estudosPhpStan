@@ -1,0 +1,13 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Undefined variable\: \$casa$#'
+			identifier: variable.undefined
+			count: 1
+			path: app/library/Auth.php
+
+		-
+			message: '#^Undefined variable\: \$teste$#'
+			identifier: variable.undefined
+			count: 1
+			path: app/library/Auth.php

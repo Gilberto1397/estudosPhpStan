@@ -36,3 +36,23 @@ Curso PHPStan - Ignorando errors - Aula 04
                     - '#Call to an undefined method App\\Models\\User::getUpdatedAt\(\)#'
 
     Visto sobre o --generate-baseline junto do comando para rodar o phpstan. Isso irá gerar um arquivo contendo todos os erros encontrados na análise utilizando o nível especificado. Assim podemos incluir no nosso projeto e ir corrigindo os erros aos poucos. O arquivo gerado também será um arquivo neon porém com o valor de ignoreErrors já preenchido com todos os erros encontrados.
+
+
+Curso PHPStan - PHPDocs - Aula 05
+    Vendo sobre PHPDocs e como ele pode influenciar na análise do PHPStan. Visto sobre falhas na análise devido a falta de tipagem de itens de ARRAY e como corrigir isso com o PHPDoc.
+
+    visto casos de uso com @param array<tipoDaChave, tipoDoValor> $users
+    e exemplo de mapeamento dos itens do array.
+
+    Iremos enviar um array com os valores [path, controller, action] e mapearemos com
+    @param array{path: string, controller: string, action: string} $route
+    @param array{0: string, 1: string, 2: string} $route -- Caso n~
+
+    Pode ser menos útil em arrays com muitos itens, mas é uma boa prática para arrays com poucos itens e que são utilizados em vários locais do código.
+
+    Com o phpdocs é possível usar por exemplo @param int<1, 100> $id -- para definir um intervalo de valores aceitáveis para o parâmetro.
+
+    há também o @param non-empty-string $name -- para definir que a string não pode ser vazia.
+
+
+PARA O LARAVEL PODEMOS UTILIZAR https://github.com/larastan/larastan/tree/3.x
